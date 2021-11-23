@@ -28,12 +28,12 @@ public class MiBaseDatos extends SQLiteOpenHelper {
 
     public static final String SQL_CREAR_TABLA_BICICLETA = "create table " + TABLA_BICICLETA +
             " ( "+COLUMNA_BICICLETA_ID+" integer primary key autoincrement, "
-                +COLUMNA_BICICLETA_SERIAL+" text not null, "
-                +COLUMNA_BICICLETA_COLOR_PRINCIPAL+" text not null, "
-                +COLUMNA_BICICLETA_COLOR_SECUNDARIO+" text not null, "
-                +COLUMNA_BICICLETA_MARCA+" text not null, "
-                +COLUMNA_BICICLETA_TIPO+" text not null, "
-                +COLUMNA_BICICLETA_URL_IMAGEN+" text not null);";
+                +COLUMNA_BICICLETA_SERIAL+" text, "
+                +COLUMNA_BICICLETA_COLOR_PRINCIPAL+" text , "
+                +COLUMNA_BICICLETA_COLOR_SECUNDARIO+" text , "
+                +COLUMNA_BICICLETA_MARCA+" text , "
+                +COLUMNA_BICICLETA_TIPO+" text , "
+                +COLUMNA_BICICLETA_URL_IMAGEN+" text );";
 
     private static MiBaseDatos miBaseDatos;
     public static MiBaseDatos getInstance(Context context){

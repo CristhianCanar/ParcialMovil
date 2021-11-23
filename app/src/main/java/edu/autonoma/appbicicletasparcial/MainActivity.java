@@ -82,46 +82,18 @@ public class MainActivity extends AppCompatActivity {
                                             uri_imagen);
         long resultado = miBaseDatos.crearBicicleta(bicicleta);
         tv_resultado.setText(""+resultado);
+        Toast.makeText(this, "Registrado Correctamente", Toast.LENGTH_SHORT).show();
     }
 
     public void cargarImagen(View view){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        /*
-        if(intent.resolveActivity(getPackageManager()) != null){
-            File photoFile = null;
-            try {
-                photoFile = crearArchivoFoto();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            if (photoFile != null){
-                Uri fotoUri = FileProvider.getUriForFile(MainActivity.this,"edu.autonoma.appbicicletasparcial",photoFile);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, path);
-                startActivityForResult(intent,1);
-            }
-        }*/
-
         intent.setType("image/*");
         startActivityForResult(intent.createChooser(intent,"Seleccione la aplicación"),1);
     }
 
-    private File crearArchivoFoto() throws IOException {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File file = File.createTempFile(
-                imageFileName,
-                ".jpg",
-                storageDir);
-        path = file.getAbsolutePath();
-        return file;
-    }
-
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 1 && resultCode == RESULT_OK){
             //Obtencion de la imagen
             Uri uri = data.getData();

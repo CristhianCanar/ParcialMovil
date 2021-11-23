@@ -59,7 +59,11 @@ public class CursorAdapter extends android.widget.CursorAdapter {
         tipo_bicicleta      = cursor.getString(cursor.getColumnIndex(MiBaseDatos.COLUMNA_BICICLETA_TIPO));
         uri_imagen          = cursor.getString(cursor.getColumnIndex(MiBaseDatos.COLUMNA_BICICLETA_URL_IMAGEN));
 
-        iv_image.setImageURI(Uri.parse(uri_imagen));
+        try {
+            iv_image.setImageURI(Uri.parse(uri_imagen));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         tv_serial.setText("serial: "+serial);
         tv_color_principal.setText("color_principal: "+color_principal);
         tv_color_secundario.setText("color_secundario: "+color_secundario);
